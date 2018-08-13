@@ -13,18 +13,33 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="googleTestLib">
+      <UniqueIdentifier>{d83d0c4f-5e2c-4ab3-9102-c0d649b84a70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tests">
+      <UniqueIdentifier>{6a300862-93e2-409e-968b-80e2ea8ab03e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{85abc07a-917a-41da-b86b-a070563c7753}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\FuncToTest.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="googleTestLib\gtest\gtest-all.cc">
+      <Filter>googleTestLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\SampleTest.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BoggleSolver\Source\FuncToTest.cpp">
+      <Filter>External</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\FuncToTest.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="googleTestLib\gtest\gtest.h">
+      <Filter>googleTestLib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
