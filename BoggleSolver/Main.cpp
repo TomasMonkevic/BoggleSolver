@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Include\FuncToTest.h"
+#include "Include/FuncToTest.h"
 
 int main()
 {

@@ -15,3 +15,6 @@
 
 .vs/
 Build/**
+build/**
+
+test_detail.xml
