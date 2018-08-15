@@ -131,10 +131,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Source\FuncToTest.cpp" />
+    <ClCompile Include="Source\BoggleSolver.cpp" />
+    <ClCompile Include="Source\Tree.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\FuncToTest.h" />
+    <ClInclude Include="Include\BoggleSolver.h" />
+    <ClInclude Include="Include\Tree.h" />
+    <ClInclude Include="Include\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

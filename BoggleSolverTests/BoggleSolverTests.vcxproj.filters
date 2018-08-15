@@ -33,9 +33,6 @@
     <ClCompile Include="Tests\SampleTest.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\BoggleSolver\Source\FuncToTest.cpp">
-      <Filter>External</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="googleTestLib\gtest\gtest.h">

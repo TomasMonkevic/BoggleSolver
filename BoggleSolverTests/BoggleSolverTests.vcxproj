@@ -134,7 +134,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\BoggleSolver\Source\FuncToTest.cpp" />
     <ClCompile Include="googleTestLib\gtest\gtest-all.cc" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Tests\SampleTest.cpp" />

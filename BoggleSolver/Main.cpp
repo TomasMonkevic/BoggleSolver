@@ -1,9 +1,9 @@
 #include <iostream>
-#include "Include/FuncToTest.h"
+#include "Include/BoggleSolver.h"
 
 int main()
 {
-	std::cout << "Hello world! "<< Add(2, 2) << std::endl;
+	LoadDictionary("../Resources/Dictionary.txt");
 	std::cin.get();
 	return 0;
 }
