@@ -1,35 +1,36 @@
 #pragma once
 
+#include "Node.h"
+
 namespace TomasMo {
 
 	class Tree
 	{
 	private:
-		struct Node
+		Node* _current;
+
+	private:
+		//might be a good idea to make this function more robust
+		inline int LetterToIndex(char letter) 
 		{
-			char Letter;
-			Node* Children[26]; //TODO test with std::vector
-			Node* Parent;
-
-			~Node()
-			{
-				for (unsigned i = 0; i < 26; i++)
-				{
-					delete Children[i];
-				}
-			}
-		};
-
-		Node* _root;
+			return static_cast<unsigned char>(letter) - 0x61;
+		}
 
 	public:
 		Tree();
 		Tree(const char* pathToDictionary);
 		~Tree();
 
+		inline bool ChildExists(char letter)
+		{
+			return _current->Children[LetterToIndex(letter)];
+		}
+
 		void Back();
+		void BackToRoot();
 		void Next(char letter);
 
+		void AddLetter(char letter);
 		void AddWord(const char* word);
 		const char* GetTraversedWord();
 	};
