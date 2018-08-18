@@ -1,5 +1,6 @@
 #include "../Include/Utils.h"
 #include <fstream>
+#include <string.h>
 
 namespace TomasMo {
 
@@ -19,5 +20,14 @@ namespace TomasMo {
 			return buffer;
 		}
 		return nullptr;
+	}
+
+	char* Strtok(char* string, const char* delimeters, char** nextToken)
+	{
+		#ifdef _WIN32
+			return strtok_s(string, delimeters, nextToken);
+		#else
+			return strtok_r(string, delimeters, nextToken);
+		#endif
 	}
 }
