@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Node.h"
+#include <string>
 
 namespace TomasMo {
 
@@ -33,5 +34,11 @@ namespace TomasMo {
 		void AddLetter(char letter);
 		void AddWord(const char* word);
 		const char* GetTraversedWord();
+
+		//Only for testing
+		std::string ToString() const;
+
+		//not used but might be useful
+		bool operator==(const Tree& rhs) const;
 	};
 }

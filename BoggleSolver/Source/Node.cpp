@@ -21,4 +21,18 @@ namespace TomasMo {
 			delete Children[i];
 		}
 	}
+
+	bool Node::operator==(const Node& rhs) const
+	{
+		if(Letter != rhs.Letter) return false;
+		
+		for(unsigned i=0; i<ALPHABET_SIZE; i++)
+		{
+			if(!((!Children[i] && !rhs.Children[i]) || (Children[i] && *Children[i] == *rhs.Children[i])))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 }

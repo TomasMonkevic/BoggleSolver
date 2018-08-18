@@ -1,7 +1,7 @@
 #include "../Include/Tree.h"
 #include "../Include/Utils.h"
-#include <string.h>
 #include <memory>
+#include <stack>
 
 namespace TomasMo {
 
@@ -22,11 +22,11 @@ namespace TomasMo {
 
 		char* word;
 		char* nextToken;
-		word = strtok_s(fileContent.get(), "\n", &nextToken); //TODO make cross-platform
+		word = Strtok(fileContent.get(), "\n", &nextToken);
 		while (word)
 		{
 			AddWord(word);
-			word = strtok_s(nullptr, "\n", &nextToken);
+			word = Strtok(nullptr, "\n", &nextToken);
 		}
 	}
 
@@ -63,7 +63,6 @@ namespace TomasMo {
 			auto* node = new Node(_current, letter);
 			_current->Children[LetterToIndex(letter)] = node;
 		}
-		Next(letter);
 	}
 
 	void Tree::AddWord(const char* word)
@@ -71,6 +70,7 @@ namespace TomasMo {
 		for (unsigned i = 0; i < strlen(word); i++)
 		{
 			AddLetter(word[i]);
+			Next(word[i]);
 		}
 		BackToRoot();
 	}
@@ -78,5 +78,36 @@ namespace TomasMo {
 	const char* Tree::GetTraversedWord()
 	{
 		return nullptr;
+	}
+
+	//does a depth first search on the tree and returns all available letters
+	std::string Tree::ToString() const
+	{
+		std::string result;
+		std::stack<Node*> neighbors;
+		neighbors.push(_current);
+		while(!neighbors.empty())
+		{
+			Node* neighbor = neighbors.top();
+			if(neighbor->Parent)
+			{
+				result += neighbor->Letter;
+			}
+			neighbors.pop();
+
+			for(int i=ALPHABET_SIZE-1; i>=0; i--)
+			{
+				if(neighbor->Children[i])
+				{
+					neighbors.push(neighbor->Children[i]);
+				}
+			}
+		}
+		return result;
+	}
+
+	bool Tree::operator==(const Tree& rhs) const
+	{
+		return *_current == *rhs._current;
 	}
 }
