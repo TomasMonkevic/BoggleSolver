@@ -6,11 +6,14 @@ set(BOGGLE_TEST_HEADERS
 )
 
 set(BOGGLE_TEST_SOURCES
-    "../BoggleSolver/Source/FuncToTest.cpp"
+    "../BoggleSolver/Source/BoggleSolver.cpp"
+    "../BoggleSolver/Source/Node.cpp"
+    "../BoggleSolver/Source/Tree.cpp"
+    "../BoggleSolver/Source/Utils.cpp"
 
     "googleTestLib/gtest/gtest-all.cc"
 
-    "Tests/SampleTest.cpp"
+    "Tests/TreeTests.cpp"
     "Main.cpp"
 )
 

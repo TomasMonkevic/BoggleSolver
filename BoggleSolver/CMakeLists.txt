@@ -2,11 +2,18 @@ cmake_minimum_required(VERSION 3.0.0)
 project(BoggleSolver VERSION 0.1.0)
 
 set(BOGGLE_HEADERS
-    "Include/FuncToTest.h"
+    "Include/BoggleSolver.h"
+    "Include/Node.h"
+    "Include/Tree.h"
+    "Include/Utils.h"
 )
 
 set(BOGGLE_SOURCES
-    "Source/FuncToTest.cpp"
+    "Source/BoggleSolver.cpp"
+    "Source/Node.cpp"
+    "Source/Tree.cpp"
+    "Source/Utils.cpp"
+    
     "Main.cpp"
 )
 

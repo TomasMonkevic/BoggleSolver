@@ -7,9 +7,10 @@ void LoadDictionary(const char* path)
 {
 	using namespace TomasMo;
 
-	printf("Started load!");
+	printf("Started load!\n");
 	Tree dictionary(path);
-	printf("Finish!");
+	//printf("%s\n", dictionary.ToString().c_str());
+	printf("Finish!\n");
 }
 
 Results FindWords(const char* board, unsigned width, unsigned height)
