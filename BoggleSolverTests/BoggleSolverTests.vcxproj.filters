@@ -24,14 +24,26 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="googleTestLib\gtest\gtest-all.cc">
       <Filter>googleTestLib</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\SampleTest.cpp">
+    <ClCompile Include="Tests\TreeTests.cpp">
       <Filter>Source Files\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BoggleSolver\Source\BoggleSolver.cpp">
+      <Filter>External</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BoggleSolver\Source\Node.cpp">
+      <Filter>External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BoggleSolver\Source\Tree.cpp">
+      <Filter>External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BoggleSolver\Source\Utils.cpp">
+      <Filter>External</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
