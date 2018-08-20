@@ -131,12 +131,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Source\Board.cpp" />
     <ClCompile Include="Source\BoggleSolver.cpp" />
     <ClCompile Include="Source\Node.cpp" />
     <ClCompile Include="Source\Tree.cpp" />
     <ClCompile Include="Source\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Include\Board.h" />
     <ClInclude Include="Include\BoggleSolver.h" />
     <ClInclude Include="Include\Node.h" />
     <ClInclude Include="Include\Tree.h" />
