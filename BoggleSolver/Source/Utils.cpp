@@ -10,10 +10,11 @@ namespace TomasMo {
 		if (fileStream)
 		{
 			fileStream.seekg(0, fileStream.end);
-			int length = fileStream.tellg();
+			std::streamoff length = fileStream.tellg();
 
 			fileStream.seekg(0, fileStream.beg);
 			char* buffer = new char[length];
+			memset(buffer, 0, length);
 			fileStream.read(buffer, length);
 
 			fileStream.close();
