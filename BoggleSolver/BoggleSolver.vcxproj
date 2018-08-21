@@ -141,6 +141,7 @@
     <ClInclude Include="Include\Board.h" />
     <ClInclude Include="Include\BoggleSolver.h" />
     <ClInclude Include="Include\Node.h" />
+    <ClInclude Include="Include\Results.h" />
     <ClInclude Include="Include\Tree.h" />
     <ClInclude Include="Include\Utils.h" />
   </ItemGroup>

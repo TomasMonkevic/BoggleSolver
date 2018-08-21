@@ -1,31 +1,38 @@
 #include "../Include/BoggleSolver.h"
 #include "../Include/Tree.h"
 #include "../Include/Utils.h"
+#include "../Include/Board.h"
 #include <cstdio>
+
+using namespace TomasMo;
+
+Tree* dictionary = nullptr;
 
 void LoadDictionary(const char* path)
 {
-	using namespace TomasMo;
 
 	printf("Started load!\n");
-	Tree dictionary(path);
+	dictionary = new Tree(path);
 	//printf("%s\n", dictionary.ToString().c_str());
 	printf("Finish!\n");
 }
 
 Results FindWords(const char* board, unsigned width, unsigned height)
 {
-	Results results;
-	results.Count = 0;
-	return results;
+	Board boardToSolve(board, width, height);
+	return boardToSolve.FindWords(*dictionary);
 }
 
 void FreeWords(Results results)
 {
-
+	for (unsigned i = 0; i < results.Count; i++)
+	{
+		delete results.Words[i];
+	}
+	delete results.Words;
 }
 
 void FreeDictionary()
 {
-
+	delete dictionary;
 }

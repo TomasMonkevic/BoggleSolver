@@ -45,6 +45,9 @@
     <ClCompile Include="..\BoggleSolver\Source\Utils.cpp">
       <Filter>External</Filter>
     </ClCompile>
+    <ClCompile Include="..\BoggleSolver\Source\Board.cpp">
+      <Filter>External</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="googleTestLib\gtest\gtest.h">

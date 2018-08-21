@@ -14,7 +14,7 @@ namespace TomasMo {
 	Tree::Tree(const char* pathToDictionary)
 		: Tree()
 	{
-		std::unique_ptr<char> fileContent(LoadFile(pathToDictionary));
+		std::unique_ptr<char[]> fileContent(LoadFile(pathToDictionary));
 		if (!fileContent)
 		{
 			return;
