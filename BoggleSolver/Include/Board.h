@@ -13,7 +13,6 @@ namespace TomasMo {
 		char* _board;
 
 	private:
-		void AddNeighbors(unsigned current, std::stack<unsigned>& neighbors, const bool* visited) const;
 		void Backtrack(unsigned current, bool* visited) const;
 
 	public:

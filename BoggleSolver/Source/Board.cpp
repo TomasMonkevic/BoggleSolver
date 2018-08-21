@@ -43,23 +43,11 @@ namespace TomasMo {
 			{
 				char letter = _board[i * _width + j];
 				std::cout << letter << " Path: ";
-				//DFS
-				std::stack<unsigned> neighbors;
-				neighbors.push(i * _width + j);
-				while (!neighbors.empty())
-				{
-					unsigned neighbor = neighbors.top();
-					neighbors.pop();
-					std::cout << _board[neighbor] << " ";
-					std::size_t temp = neighbors.size();
-					if (!visited[neighbor])
-					{
-						visited[neighbor] = true;
-						AddNeighbors(neighbor, neighbors, visited.get());
-					}
-				}
-				memset(visited.get(), 0, _width*_height);
+				Backtrack(i * _width + j, visited.get());
 				std::cout << std::endl;
+				std::cout << std::endl;
+				std::cout << std::endl;
+				memset(visited.get(), 0, _width*_height);
 			}
 			//std::cout << std::endl;
 		}
@@ -68,6 +56,7 @@ namespace TomasMo {
 
 	void Board::Backtrack(unsigned current, bool* visited) const
 	{
+		std::cout << _board[current] << " ";
 		visited[current] = true;
 		int currentX = static_cast<int>(current % _height);
 		int currentY = static_cast<int>(current / _height);
@@ -77,28 +66,12 @@ namespace TomasMo {
 			{
 				if (!visited[i * _width + j])
 				{
-					//std::cout << _board[i * _width + j] << " ";
+					Backtrack(i * _width + j, visited);
+					visited[i * _width + j] = false;
+					std::cout << ". ";
 				}
 			}
 		}
-	}
-
-	void Board::AddNeighbors(unsigned current, std::stack<unsigned>& neighbors, const bool* visited) const
-	{
-		int currentX = static_cast<int>(current % _height);
-		int currentY = static_cast<int>(current / _height);
-		for (unsigned i = std::max(0, currentY - 1); i <= std::min(static_cast<int>(_height-1), currentY + 1); i++)
-		{
-			for (unsigned j = std::max(0, currentX - 1); j <= std::min(static_cast<int>(_width-1), currentX + 1); j++)
-			{
-				if (!visited[i * _width + j])
-				{
-					neighbors.push(i * _width + j);
-					//std::cout << _board[i * _width + j] << " ";
-				}
-			}
-		}
-		//std::cout << std::endl;
 	}
 
 	Board::~Board()
