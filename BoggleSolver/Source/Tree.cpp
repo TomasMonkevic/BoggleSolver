@@ -38,7 +38,10 @@ namespace TomasMo {
 
 	void Tree::Back()
 	{
-
+		if (_current->Parent)
+		{
+			_current = _current->Parent;
+		}
 	}
 
 	void Tree::BackToRoot()
@@ -72,6 +75,7 @@ namespace TomasMo {
 			AddLetter(word[i]);
 			Next(word[i]);
 		}
+		_current->IsWord = true;
 		BackToRoot();
 	}
 

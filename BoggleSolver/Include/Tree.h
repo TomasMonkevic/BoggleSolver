@@ -12,7 +12,7 @@ namespace TomasMo {
 
 	private:
 		//might be a good idea to make this function more robust
-		inline int LetterToIndex(char letter) 
+		inline int LetterToIndex(char letter) const
 		{
 			return static_cast<unsigned char>(letter) - 0x61;
 		}
@@ -22,10 +22,11 @@ namespace TomasMo {
 		Tree(const char* pathToDictionary);
 		~Tree();
 
-		inline bool ChildExists(char letter)
+		inline bool ChildExists(char letter) const
 		{
 			return _current->Children[LetterToIndex(letter)];
 		}
+		inline bool IsWord() const { return _current->IsWord; }
 
 		void Back();
 		void BackToRoot();
