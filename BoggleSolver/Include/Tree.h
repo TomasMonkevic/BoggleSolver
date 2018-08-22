@@ -9,6 +9,7 @@ namespace TomasMo {
 	{
 	private:
 		Node* _current;
+		//TODO A good idea would be to have a root node
 
 	private:
 		//might be a good idea to make this function more robust

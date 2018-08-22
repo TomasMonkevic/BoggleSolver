@@ -86,7 +86,6 @@ namespace TomasMo {
 	{
 		std::string result = "";
 		Node* iterator = _current;
-		_current->IsWord = false;
 		while (iterator->Parent)
 		{
 			result.insert(result.begin(), iterator->Letter);
