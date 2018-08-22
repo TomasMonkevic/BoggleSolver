@@ -43,7 +43,7 @@ namespace TomasMo {
 			{
 				char letter = _board[i * _width + j];
 				std::cout << letter << " Path: ";
-				Backtrack(i * _width + j, visited.get());
+				Backtrack(i * _width + j, visited.get(), dictionary, results);
 				std::cout << std::endl;
 				std::cout << std::endl;
 				std::cout << std::endl;
@@ -54,10 +54,20 @@ namespace TomasMo {
 		return results;
 	}
 
-	void Board::Backtrack(unsigned current, bool* visited) const
+	void Board::Backtrack(unsigned current, bool* visited, Tree& dictionary, Results& results) const
 	{
 		std::cout << _board[current] << " ";
+		if (!dictionary.ChildExists(_board[current]))
+		{
+			return;
+		}
+		if (dictionary.IsWord())
+		{
+			//TODO fill in the results
+			//results.Count++;
+		}
 		visited[current] = true;
+		dictionary.Next(_board[current]);
 		int currentX = static_cast<int>(current % _height);
 		int currentY = static_cast<int>(current / _height);
 		for (unsigned i = std::max(0, currentY - 1); i <= std::min(static_cast<int>(_height - 1), currentY + 1); i++)
@@ -66,8 +76,9 @@ namespace TomasMo {
 			{
 				if (!visited[i * _width + j])
 				{
-					Backtrack(i * _width + j, visited);
+					Backtrack(i * _width + j, visited, dictionary, results);
 					visited[i * _width + j] = false;
+					dictionary.Back();
 					std::cout << ". ";
 				}
 			}

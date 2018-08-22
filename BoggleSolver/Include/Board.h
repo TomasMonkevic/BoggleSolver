@@ -13,7 +13,7 @@ namespace TomasMo {
 		char* _board;
 
 	private:
-		void Backtrack(unsigned current, bool* visited) const;
+		void Backtrack(unsigned current, bool* visited, Tree& dictionary, Results& results) const;
 
 	public:
 		Board(const char* path);
