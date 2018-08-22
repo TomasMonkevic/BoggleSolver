@@ -26,7 +26,14 @@ namespace TomasMo {
 		{
 			return _current->Children[LetterToIndex(letter)];
 		}
-		inline bool IsWord() const { return _current->IsWord; }
+		inline bool IsWord() const
+		{
+			if (!_current) 
+			{
+				return false;
+			} 
+			return _current->IsWord; 
+		}
 
 		void Back();
 		void BackToRoot();
@@ -34,7 +41,8 @@ namespace TomasMo {
 
 		void AddLetter(char letter);
 		void AddWord(const char* word);
-		const char* GetTraversedWord();
+		//TODO optimize this function
+		std::string GetTraversedWord();
 
 		//Only for testing
 		std::string ToString() const;

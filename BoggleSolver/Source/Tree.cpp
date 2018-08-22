@@ -56,7 +56,10 @@ namespace TomasMo {
 
 	void Tree::Next(char letter)
 	{
-		_current = _current->Children[LetterToIndex(letter)];
+		if (ChildExists(letter))
+		{
+			_current = _current->Children[LetterToIndex(letter)];
+		}
 	}
 
 	void Tree::AddLetter(char letter)
@@ -79,9 +82,17 @@ namespace TomasMo {
 		BackToRoot();
 	}
 
-	const char* Tree::GetTraversedWord()
+	std::string Tree::GetTraversedWord()
 	{
-		return nullptr;
+		std::string result = "";
+		Node* iterator = _current;
+		_current->IsWord = false;
+		while (iterator->Parent)
+		{
+			result.insert(result.begin(), iterator->Letter);
+			iterator = iterator->Parent;
+		}
+		return result;
 	}
 
 	//does a depth first search on the tree and returns all available letters
