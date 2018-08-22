@@ -3,13 +3,13 @@
 namespace TomasMo {
 
 	Node::Node()
-		: Parent(nullptr), Letter('\0')
+		: Parent(nullptr), Letter('\0'), IsWord(false)
 	{
 		memset(Children, 0, ALPHABET_SIZE * sizeof(void*));
 	}
 
 	Node::Node(Node* parent, char letter)
-		: Parent(parent), Letter(letter)
+		: Parent(parent), Letter(letter), IsWord(false)
 	{
 		memset(Children, 0, ALPHABET_SIZE * sizeof(void*));
 	}
@@ -24,7 +24,8 @@ namespace TomasMo {
 
 	bool Node::operator==(const Node& rhs) const
 	{
-		if(Letter != rhs.Letter) return false;
+		if (Letter != rhs.Letter) return false;
+		if (IsWord != rhs.IsWord) return false;
 		
 		for(unsigned i=0; i<ALPHABET_SIZE; i++)
 		{
