@@ -137,6 +137,7 @@
     <ClCompile Include="..\BoggleSolver\Source\Board.cpp" />
     <ClCompile Include="..\BoggleSolver\Source\BoggleSolver.cpp" />
     <ClCompile Include="..\BoggleSolver\Source\Node.cpp" />
+    <ClCompile Include="..\BoggleSolver\Source\Timer.cpp" />
     <ClCompile Include="..\BoggleSolver\Source\Tree.cpp" />
     <ClCompile Include="..\BoggleSolver\Source\Utils.cpp" />
     <ClCompile Include="googleTestLib\gtest\gtest-all.cc" />

@@ -134,6 +134,7 @@
     <ClCompile Include="Source\Board.cpp" />
     <ClCompile Include="Source\BoggleSolver.cpp" />
     <ClCompile Include="Source\Node.cpp" />
+    <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Tree.cpp" />
     <ClCompile Include="Source\Utils.cpp" />
   </ItemGroup>
@@ -142,6 +143,7 @@
     <ClInclude Include="Include\BoggleSolver.h" />
     <ClInclude Include="Include\Node.h" />
     <ClInclude Include="Include\Results.h" />
+    <ClInclude Include="Include\Timer.h" />
     <ClInclude Include="Include\Tree.h" />
     <ClInclude Include="Include\Utils.h" />
   </ItemGroup>
