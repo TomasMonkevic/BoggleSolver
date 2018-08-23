@@ -35,6 +35,14 @@ namespace TomasMo {
 			} 
 			return _current->IsWord; 
 		}
+		inline bool IsParent(char letter) 
+		{
+			if (_current && _current->Parent)
+			{
+				return _current->Parent->Letter == letter;  
+			}
+			return false;
+		}
 
 		void Back();
 		void BackToRoot();

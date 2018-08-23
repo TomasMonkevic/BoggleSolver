@@ -60,6 +60,10 @@ namespace TomasMo {
 		//std::cout << _board[current] << " ";
 		visited[current] = true;
 		dictionary.Next(_board[current]);
+		if (_board[current] == 'q') //TODO not really nice to have hard coded values
+		{
+			dictionary.Next('u');
+		}
 		if (dictionary.IsWord())
 		{
 			//TODO fill in the results
@@ -76,6 +80,10 @@ namespace TomasMo {
 				{
 					Backtrack(i * _width + j, visited, dictionary, results);
 					visited[i * _width + j] = false;
+					if (dictionary.IsParent('q'))
+					{
+						dictionary.Back();
+					}
 					dictionary.Back();
 					//std::cout << ". ";
 				}
