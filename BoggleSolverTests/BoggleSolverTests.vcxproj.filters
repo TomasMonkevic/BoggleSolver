@@ -51,10 +51,16 @@
     <ClCompile Include="..\BoggleSolver\Source\Timer.cpp">
       <Filter>External</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\SolverTests.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="googleTestLib\gtest\gtest.h">
       <Filter>googleTestLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\Common.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

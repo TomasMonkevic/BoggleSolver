@@ -142,10 +142,12 @@
     <ClCompile Include="..\BoggleSolver\Source\Utils.cpp" />
     <ClCompile Include="googleTestLib\gtest\gtest-all.cc" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Tests\SolverTests.cpp" />
     <ClCompile Include="Tests\TreeTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="googleTestLib\gtest\gtest.h" />
+    <ClInclude Include="Tests\Common.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BoggleSolver\BoggleSolver.vcxproj">

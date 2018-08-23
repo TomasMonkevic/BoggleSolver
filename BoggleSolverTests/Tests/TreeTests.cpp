@@ -1,16 +1,9 @@
 #include "../googleTestLib/gtest/gtest.h"
+#include "Common.h"
 #include <Tree.h>
 #include <Timer.h>
 
 using namespace TomasMo;
-
-#ifdef _WIN32
-	#define RESOURCE_PATH "../../../../Resources/"
-#else
-	#define RESOURCE_PATH "Resources/"
-#endif
-
-#define RESOURCE_FOLDER(RESOURCE) RESOURCE_PATH ## RESOURCE
 
 TEST(TreeTests, AddLetter)
 {
