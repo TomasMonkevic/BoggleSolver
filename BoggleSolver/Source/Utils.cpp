@@ -31,4 +31,15 @@ namespace TomasMo {
 			return strtok_r(string, delimeters, nextToken);
 		#endif
 	}
+
+	char* Strdup(const char *src) 
+	{
+		size_t lenght = strlen(src) + 1;
+		char* s = (char*)malloc(lenght);
+		if (s == nullptr)
+		{
+			return nullptr;
+		}
+		return (char*)memcpy(s, src, lenght);
+	}
 }
