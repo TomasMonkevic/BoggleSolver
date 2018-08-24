@@ -2,7 +2,7 @@
 
 #include "Results.h"
 #include "Tree.h"
-#include <stack>
+#include <vector>
 
 namespace TomasMo {
 
@@ -14,16 +14,17 @@ namespace TomasMo {
 		unsigned _width, _height;
 		mutable char _currentWord[MAX_WORD_SIZE];
 		char* _board;
+		Tree& _dictionary;
 
 	private:
-		void Backtrack(unsigned current, bool* visited, Tree& dictionary, Results& results) const;
+		void Backtrack(unsigned current, bool* visited, std::vector<char*>& words, unsigned& score) const;
 
 	public:
-		Board(const char* path);
-		Board(const char* board, unsigned width, unsigned height);
+		Board(const char* path, Tree& dictionary);
+		Board(const char* board, unsigned width, unsigned height, Tree& dictionary);
 
 		~Board();
 
-		Results FindWords(Tree& dictionary) const;
+		Results FindWords() const;
 	};
 }

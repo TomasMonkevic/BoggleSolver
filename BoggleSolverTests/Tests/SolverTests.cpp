@@ -3,6 +3,7 @@
 #include <Board.h>
 #include <Tree.h>
 #include <Timer.h>
+#include <BoggleSolver.h>
 
 using namespace TomasMo;
 
@@ -27,10 +28,11 @@ Tree* SolverTests::s_dictionary = nullptr;
 
 TEST_F(SolverTests, Board3x3)
 {
-	Board solver(RESOURCE_FOLDER("Board3x3.txt"));
+	Board solver(RESOURCE_FOLDER("Board3x3.txt"), *s_dictionary);
 	Timer timer;
-	Results result = solver.FindWords(*s_dictionary);
+	Results result = solver.FindWords();
 	long long elapsedMs = timer.ElapsedMs();
+	FreeWords(result);
 	EXPECT_EQ(result.Count, 21);
 	std::cout << "Time elapsed: " << elapsedMs << " ms. " << result.Count << std::endl;
 	EXPECT_TRUE(elapsedMs < 10);
@@ -38,10 +40,11 @@ TEST_F(SolverTests, Board3x3)
 
 TEST_F(SolverTests, Board100x100)
 {
-	Board solver(RESOURCE_FOLDER("Board100x100.txt"));
+	Board solver(RESOURCE_FOLDER("Board100x100.txt"), *s_dictionary);
 	Timer timer;
-	Results result = solver.FindWords(*s_dictionary);
+	Results result = solver.FindWords();
 	long long elapsedMs = timer.ElapsedMs();
+	FreeWords(result);
 	//EXPECT_EQ(result.Count, 21);
 	std::cout << "Time elapsed: " << elapsedMs << " ms." << result.Count << std::endl;
 	EXPECT_TRUE(elapsedMs < 200);
@@ -49,10 +52,11 @@ TEST_F(SolverTests, Board100x100)
 
 TEST_F(SolverTests, Board300x300)
 {
-	Board solver(RESOURCE_FOLDER("Board300x300.txt"));
+	Board solver(RESOURCE_FOLDER("Board300x300.txt"), *s_dictionary);
 	Timer timer;
-	Results result = solver.FindWords(*s_dictionary);
+	Results result = solver.FindWords();
 	long long elapsedMs = timer.ElapsedMs();
+	FreeWords(result);
 	//EXPECT_EQ(result.Count, 21);
 	std::cout << "Time elapsed: " << elapsedMs << " ms." << result.Count << std::endl;
 	EXPECT_TRUE(elapsedMs < 2000);

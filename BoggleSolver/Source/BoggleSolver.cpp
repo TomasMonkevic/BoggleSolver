@@ -19,17 +19,17 @@ void LoadDictionary(const char* path)
 
 Results FindWords(const char* board, unsigned width, unsigned height)
 {
-	Board boardToSolve(board, width, height);
-	return boardToSolve.FindWords(*dictionary);
+	Board boardToSolve(board, *dictionary);
+	return boardToSolve.FindWords();
 }
 
 void FreeWords(Results results)
 {
 	for (unsigned i = 0; i < results.Count; i++)
 	{
-		delete results.Words[i];
+		free((void*)results.Words[i]);
 	}
-	delete results.Words;
+	delete[] results.Words;
 }
 
 void FreeDictionary()

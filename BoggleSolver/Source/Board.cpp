@@ -7,7 +7,43 @@
 
 namespace TomasMo {
 
-	Board::Board(const char* path)
+	unsigned char WordScore(const char* word)
+	{
+		size_t wordLenght = strlen(word);
+		unsigned char score = 0;
+		if (wordLenght == 3 || wordLenght == 4)
+		{
+			score = 1;
+		}
+		else if (wordLenght == 5)
+		{
+			score = 2;
+		}
+		else if (wordLenght == 6)
+		{
+			score = 3;
+		}
+		else if (wordLenght == 7)
+		{
+			score = 5;
+		}
+		else if (wordLenght >= 8)
+		{
+			score = 11;
+		}
+		return score;
+	}
+
+	void FillResults(Results& results, const std::vector<char*>& words, unsigned score)
+	{
+		results.Count = words.size();
+		results.Words = new char*[words.size()];
+		memcpy((void*)results.Words, words.data(), words.size() * sizeof(void*));
+		results.Score = score;
+	}
+
+	Board::Board(const char* path, Tree& dictionary)
+		: _dictionary(dictionary)
 	{
 		memset(_currentWord, 0, MAX_WORD_SIZE);
 		std::unique_ptr<char[]> boardContent(LoadFile(path));
@@ -25,18 +61,18 @@ namespace TomasMo {
 		memcpy(_board, newLine + 1, _width*_height);
 	}
 
-	Board::Board(const char* board, unsigned width, unsigned height)
-		: _width(width), _height(height), _board(new char[_width*_height])
+	Board::Board(const char* board, unsigned width, unsigned height, Tree& dictionary)
+		: _width(width), _height(height), _board(new char[_width*_height]), _dictionary(dictionary)
 	{
 		memset(_currentWord, 0, MAX_WORD_SIZE);
 		memcpy(_board, board, _width*height);
 	}
 
-	Results Board::FindWords(Tree& dictionary) const
+	Results Board::FindWords() const
 	{
-		Results results;
-		results.Words = nullptr;
-		results.Count = 0;
+		std::vector<char*> words;
+		words.reserve(2 * _width * _height); //saves up a few reallocations
+		unsigned score = 0;
 		std::unique_ptr<bool[]> visited(new bool[_width*_height]);
 		memset(visited.get(), 0, _width*_height);
 		for (unsigned i = 0; i < _height; i++)
@@ -44,37 +80,33 @@ namespace TomasMo {
 			for (unsigned j = 0; j < _width; j++)
 			{
 				char letter = _board[i * _width + j];
-				//std::cout << letter << " Path: ";
-				Backtrack(i * _width + j, visited.get(), dictionary, results);
-				//std::cout << std::endl;
-				//std::cout << std::endl;
-				//std::cout << std::endl;
-				dictionary.BackToRoot();
+				Backtrack(i * _width + j, visited.get(), words, score);
+				_dictionary.BackToRoot();
 				memset(_currentWord, 0, MAX_WORD_SIZE);
 				memset(visited.get(), 0, _width*_height);
 			}
 			//std::cout << std::endl;
 		}
-		return results;
+		Results result;
+		FillResults(result, words, score);
+		return result;
 	}
 
-	//TODO dictionary and results can be members of board this way we will save more space for stack
-	void Board::Backtrack(unsigned current, bool* visited, Tree& dictionary, Results& results) const
+	void Board::Backtrack(unsigned current, bool* visited, std::vector<char*>& words, unsigned& score) const
 	{
 		//std::cout << _board[current] << " ";
 		visited[current] = true;
-		dictionary.Next(_board[current]);
+		_dictionary.Next(_board[current]);
 		_currentWord[strlen(_currentWord)] = _board[current];
 		if (_board[current] == 'q') //TODO not really nice to have hard coded values
 		{
 			_currentWord[strlen(_currentWord)] = 'u';
-			dictionary.Next('u');
+			_dictionary.Next('u');
 		}
-		if (dictionary.IsWord())
+		if (_dictionary.IsWord())
 		{
-			//TODO fill in the results
-			//dictionary.GetTraversedWord();
-			results.Count++;
+			score += WordScore(_currentWord);
+			words.emplace_back(Strdup(_currentWord));
 		}
 		int currentX = static_cast<int>(current % _height);
 		int currentY = static_cast<int>(current / _height);
@@ -82,17 +114,17 @@ namespace TomasMo {
 		{
 			for (unsigned j = std::max(0, currentX - 1); j <= std::min(static_cast<int>(_width - 1), currentX + 1); j++)
 			{
-				if (!visited[i * _width + j] && dictionary.ChildExists(_board[i * _width + j]))
+				if (!visited[i * _width + j] && _dictionary.ChildExists(_board[i * _width + j]))
 				{
-					Backtrack(i * _width + j, visited, dictionary, results);
+					Backtrack(i * _width + j, visited, words, score);
 					visited[i * _width + j] = false;
 					_currentWord[strlen(_currentWord) - 1] = '\0';
-					if (dictionary.IsParent('q'))
+					if (_dictionary.IsParent('q'))
 					{
 						_currentWord[strlen(_currentWord) - 1] = '\0';
-						dictionary.Back();
+						_dictionary.Back();
 					}
-					dictionary.Back();
+					_dictionary.Back();
 					//std::cout << ". ";
 				}
 			}
