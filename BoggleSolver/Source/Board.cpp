@@ -9,6 +9,7 @@ namespace TomasMo {
 
 	Board::Board(const char* path)
 	{
+		memset(_currentWord, 0, MAX_WORD_SIZE);
 		std::unique_ptr<char[]> boardContent(LoadFile(path));
 		if (!boardContent)
 		{
@@ -27,6 +28,7 @@ namespace TomasMo {
 	Board::Board(const char* board, unsigned width, unsigned height)
 		: _width(width), _height(height), _board(new char[_width*_height])
 	{
+		memset(_currentWord, 0, MAX_WORD_SIZE);
 		memcpy(_board, board, _width*height);
 	}
 
@@ -48,6 +50,7 @@ namespace TomasMo {
 				//std::cout << std::endl;
 				//std::cout << std::endl;
 				dictionary.BackToRoot();
+				memset(_currentWord, 0, MAX_WORD_SIZE);
 				memset(visited.get(), 0, _width*_height);
 			}
 			//std::cout << std::endl;
@@ -55,19 +58,22 @@ namespace TomasMo {
 		return results;
 	}
 
+	//TODO dictionary and results can be members of board this way we will save more space for stack
 	void Board::Backtrack(unsigned current, bool* visited, Tree& dictionary, Results& results) const
 	{
 		//std::cout << _board[current] << " ";
 		visited[current] = true;
 		dictionary.Next(_board[current]);
+		_currentWord[strlen(_currentWord)] = _board[current];
 		if (_board[current] == 'q') //TODO not really nice to have hard coded values
 		{
+			_currentWord[strlen(_currentWord)] = 'u';
 			dictionary.Next('u');
 		}
 		if (dictionary.IsWord())
 		{
 			//TODO fill in the results
-			std::cout << dictionary.GetTraversedWord() << std::endl;
+			//dictionary.GetTraversedWord();
 			results.Count++;
 		}
 		int currentX = static_cast<int>(current % _height);
@@ -80,8 +86,10 @@ namespace TomasMo {
 				{
 					Backtrack(i * _width + j, visited, dictionary, results);
 					visited[i * _width + j] = false;
+					_currentWord[strlen(_currentWord) - 1] = '\0';
 					if (dictionary.IsParent('q'))
 					{
+						_currentWord[strlen(_currentWord) - 1] = '\0';
 						dictionary.Back();
 					}
 					dictionary.Back();

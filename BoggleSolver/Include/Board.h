@@ -9,7 +9,10 @@ namespace TomasMo {
 	class Board
 	{
 	private:
+		static const int MAX_WORD_SIZE = 50;
+
 		unsigned _width, _height;
+		mutable char _currentWord[MAX_WORD_SIZE];
 		char* _board;
 
 	private:
