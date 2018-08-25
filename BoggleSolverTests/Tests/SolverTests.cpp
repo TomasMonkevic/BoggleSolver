@@ -15,7 +15,7 @@ protected:
 protected:
 	static void SetUpTestCase()
 	{
-		s_dictionary = new Tree(RESOURCE_FOLDER("Dictionary.txt"));
+		s_dictionary = new Tree((std::string(RESOURCE_PATH) + std::string("Dictionary.txt")).c_str());
 	}
 
 	static void TearDownTestCase()
@@ -28,7 +28,7 @@ Tree* SolverTests::s_dictionary = nullptr;
 
 TEST_F(SolverTests, Board3x3)
 {
-	Board solver(RESOURCE_FOLDER("Board3x3.txt"), *s_dictionary);
+	Board solver((std::string(RESOURCE_PATH) + std::string("Board3x3.txt")).c_str(), *s_dictionary);
 	Timer timer;
 	Results result = solver.FindWords();
 	long long elapsedMs = timer.ElapsedMs();
@@ -40,7 +40,7 @@ TEST_F(SolverTests, Board3x3)
 
 TEST_F(SolverTests, Board100x100)
 {
-	Board solver(RESOURCE_FOLDER("Board100x100.txt"), *s_dictionary);
+	Board solver((std::string(RESOURCE_PATH) + std::string("Board100x100.txt")).c_str(), *s_dictionary);
 	Timer timer;
 	Results result = solver.FindWords();
 	long long elapsedMs = timer.ElapsedMs();
@@ -52,7 +52,7 @@ TEST_F(SolverTests, Board100x100)
 
 TEST_F(SolverTests, Board300x300)
 {
-	Board solver(RESOURCE_FOLDER("Board300x300.txt"), *s_dictionary);
+	Board solver((std::string(RESOURCE_PATH) + std::string("Board300x300.txt")).c_str(), *s_dictionary);
 	Timer timer;
 	Results result = solver.FindWords();
 	long long elapsedMs = timer.ElapsedMs();

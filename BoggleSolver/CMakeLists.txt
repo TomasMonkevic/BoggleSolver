@@ -6,6 +6,9 @@ set(BOGGLE_HEADERS
     "Include/Node.h"
     "Include/Tree.h"
     "Include/Utils.h"
+    "Include/Board.h"
+    "Include/Results.h"
+    "Include/Timer.h"
 )
 
 set(BOGGLE_SOURCES
@@ -13,6 +16,8 @@ set(BOGGLE_SOURCES
     "Source/Node.cpp"
     "Source/Tree.cpp"
     "Source/Utils.cpp"
+    "Source/Timer.cpp"
+    "Source/Board.cpp"
     
     "Main.cpp"
 )

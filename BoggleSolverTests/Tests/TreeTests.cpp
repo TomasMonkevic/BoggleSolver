@@ -21,14 +21,14 @@ TEST(TreeTests, AddWord)
 
 TEST(TreeTests, ConstructFromFile)
 {
-	Tree actualResult(RESOURCE_FOLDER("TestDictionary.txt"));
+	Tree actualResult((std::string(RESOURCE_PATH) + std::string("TestDictionary.txt")).c_str());
 	ASSERT_STRCASEEQ(actualResult.ToString().c_str(), "abcdefbcd");
 }
 
 TEST(TreeTests, PerformanceTest)
 {
 	Timer timer;
-	Tree actualResult(RESOURCE_FOLDER("Dictionary.txt"));
+	Tree actualResult((std::string(RESOURCE_PATH) + std::string("Dictionary.txt")).c_str());
 	long long elapsedMs = timer.ElapsedMs();
 	std::cout << "Time elapsed: " << elapsedMs << " ms."<< std::endl;
 	ASSERT_TRUE(elapsedMs < 100);

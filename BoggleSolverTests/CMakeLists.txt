@@ -10,10 +10,13 @@ set(BOGGLE_TEST_SOURCES
     "../BoggleSolver/Source/Node.cpp"
     "../BoggleSolver/Source/Tree.cpp"
     "../BoggleSolver/Source/Utils.cpp"
+    "../BoggleSolver/Source/Board.cpp"
+    "../BoggleSolver/Source/Timer.cpp"
 
     "googleTestLib/gtest/gtest-all.cc"
 
     "Tests/TreeTests.cpp"
+    "Tests/SolverTests.cpp"
     "Main.cpp"
 )
 

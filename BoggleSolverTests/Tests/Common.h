@@ -5,5 +5,3 @@
 #else
 	#define RESOURCE_PATH "Resources/"
 #endif
-
-#define RESOURCE_FOLDER(RESOURCE) RESOURCE_PATH ## RESOURCE

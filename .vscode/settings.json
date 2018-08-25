@@ -1,5 +1,7 @@
 {
     "gtestExplorer.executable": "build/BoggleSolverTests/BoggleSolverTests",
+    "testExplorer.onReload": "retire",
+    "testExplorer.onStart": "retire",
     "files.associations": {
         "array": "cpp",
         "*.tcc": "cpp",

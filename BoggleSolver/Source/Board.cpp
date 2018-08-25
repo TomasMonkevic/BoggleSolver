@@ -51,7 +51,11 @@ namespace TomasMo {
 		{
 			return;
 		}
-		int dimensionsReadCount = sscanf_s(boardContent.get(), "%d %d", &_width, &_height);
+		#ifdef _WIN32
+			int dimensionsReadCount = sscanf_s(boardContent.get(), "%d %d", &_width, &_height);
+		#else
+			int dimensionsReadCount = sscanf(boardContent.get(), "%d %d", &_width, &_height);
+		#endif
 		if (!dimensionsReadCount)
 		{
 			return;
