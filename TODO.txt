@@ -1,0 +1,18 @@
+- operator== for Results
+    - compare Results in BoardTest3x3
+- operator<< for Results
+    - print results to file in tests
+- 500x500 test only find words
+- 1000x1000 test only find words
+- full program performance tests
+    - 100X100
+    - 300x300
+    - 500x500
+    - 1000x1000
+- make a cross-platform Scanf function
+- clean up all TODO's in code
+- board not square test find words
+- optimize i*j to current and back stuff
+- optimize Node size, but check if performance doesn't suffer
+    - support not only lower case letters
+- test with bigger dictionary
