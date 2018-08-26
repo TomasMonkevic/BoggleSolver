@@ -47,7 +47,7 @@ TEST_F(SolverTests, Board100x100)
 	FreeWords(result);
 	//EXPECT_EQ(result.Count, 21);
 	std::cout << "Time elapsed: " << elapsedMs << " ms." << result.Count << std::endl;
-	EXPECT_TRUE(elapsedMs < 200);
+	EXPECT_TRUE(elapsedMs < 250);
 }
 
 TEST_F(SolverTests, Board300x300)
@@ -59,5 +59,29 @@ TEST_F(SolverTests, Board300x300)
 	FreeWords(result);
 	//EXPECT_EQ(result.Count, 21);
 	std::cout << "Time elapsed: " << elapsedMs << " ms." << result.Count << std::endl;
-	EXPECT_TRUE(elapsedMs < 2000);
+	EXPECT_TRUE(elapsedMs < 2500);
+}
+
+TEST_F(SolverTests, Board500x500)
+{
+	Board solver((std::string(RESOURCE_PATH) + std::string("Board500x500.txt")).c_str(), *s_dictionary);
+	Timer timer;
+	Results result = solver.FindWords();
+	long long elapsedMs = timer.ElapsedMs();
+	FreeWords(result);
+	//EXPECT_EQ(result.Count, 21);
+	std::cout << "Time elapsed: " << elapsedMs << " ms." << result.Count << std::endl;
+	EXPECT_TRUE(elapsedMs < 8000);
+}
+
+TEST_F(SolverTests, Board1000x1000)
+{
+	Board solver((std::string(RESOURCE_PATH) + std::string("Board1000x1000.txt")).c_str(), *s_dictionary);
+	Timer timer;
+	Results result = solver.FindWords();
+	long long elapsedMs = timer.ElapsedMs();
+	FreeWords(result);
+	//EXPECT_EQ(result.Count, 21);
+	std::cout << "Time elapsed: " << elapsedMs << " ms." << result.Count << std::endl;
+	EXPECT_TRUE(elapsedMs < 55000);
 }

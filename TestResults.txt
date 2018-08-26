@@ -1,8 +1,11 @@
 === Old BoggleSolver (only find words method) ===
-100x100 | ~1464 ms  | 44 199 words
-300x300 | ~34981 ms | 90 236 words
+100x100   | ~1464 ms  | 44 199 words
+300x300   | ~34981 ms | 90 236 words
+500x500   | ~6 min
+1000x1000 | RIP
 
-NOTE: new boggle solver can find and display words, but doens't append words to results struct and not yet sure if they are correct
 === New BoggleSolver (only find words method) ===
-100x100 | ~233 ms   | 487 345 words 
-300x300 | ~2495 ms  | 4 768 801 words
+100x100   | ~233 ms    | 487 345 words 
+300x300   | ~2495 ms   | 4 768 801 words
+500x500   | ~7814 ms   | 13 426 900 words
+1000x1000 | ~53538 ms  | 53 820 527 words
