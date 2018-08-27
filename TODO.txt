@@ -1,9 +1,5 @@
 - operator== for Results
     - compare Results in BoardTest3x3
-- operator<< for Results
-    - print results to file in tests
-- 500x500 test only find words
-- 1000x1000 test only find words
 - full program performance tests
     - 100X100
     - 300x300
