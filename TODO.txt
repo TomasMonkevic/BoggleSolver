@@ -1,5 +1,3 @@
-- operator== for Results
-    - compare Results in BoardTest3x3
 - full program performance tests
     - 100X100
     - 300x300
