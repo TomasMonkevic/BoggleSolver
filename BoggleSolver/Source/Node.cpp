@@ -3,13 +3,13 @@
 namespace TomasMo {
 
 	Node::Node()
-		: Parent(nullptr), Letter('\0'), IsWord(false)
+		: IsFound(false), Parent(nullptr), Letter('\0'), IsWord(false)
 	{
 		memset(Children, 0, ALPHABET_SIZE * sizeof(void*));
 	}
 
 	Node::Node(Node* parent, char letter)
-		: Parent(parent), Letter(letter), IsWord(false)
+		: IsFound(false), Parent(parent), Letter(letter), IsWord(false)
 	{
 		memset(Children, 0, ALPHABET_SIZE * sizeof(void*));
 	}

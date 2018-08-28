@@ -87,6 +87,8 @@ namespace TomasMo {
 			}
 			//std::cout << std::endl;
 		}
+		//all found words should be reset, because the dictionary may be used in another find words function (takes about 26 ms)
+		_dictionary.ResetFoundWords();
 		Results result;
 		FillResults(result, words, score);
 		return result;
@@ -103,8 +105,9 @@ namespace TomasMo {
 			_currentWord[strlen(_currentWord)] = 'u';
 			_dictionary.Next('u');
 		}
-		if (_dictionary.IsWord())
+		if (_dictionary.IsWord() && !_dictionary.IsFound())
 		{
+			_dictionary.SetWordFoundTrue();
 			score += WordScore(_currentWord);
 			words.emplace_back(Strdup(_currentWord));
 		}

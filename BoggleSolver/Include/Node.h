@@ -8,6 +8,7 @@ namespace TomasMo {
 
 	struct Node
 	{
+		bool IsFound;
 		char Letter; //not needed because can be determined from child index
 		bool IsWord;
 		Node* Children[ALPHABET_SIZE];

@@ -26,6 +26,7 @@ namespace TomasMo {
 		{
 			return _current->Children[LetterToIndex(letter)];
 		}
+
 		inline bool IsWord() const
 		{
 			if (!_current) 
@@ -34,6 +35,10 @@ namespace TomasMo {
 			} 
 			return _current->IsWord; 
 		}
+
+		inline bool IsFound() const { return _current->IsFound; }
+		inline void SetWordFoundTrue() { _current->IsFound = true; }
+
 		inline bool IsParent(char letter) 
 		{
 			if (_current && _current->Parent)
@@ -49,6 +54,7 @@ namespace TomasMo {
 
 		void AddLetter(char letter);
 		void AddWord(const char* word);
+		void ResetFoundWords();
 
 		//Only for testing
 		std::string ToString() const;

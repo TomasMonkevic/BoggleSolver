@@ -82,6 +82,26 @@ namespace TomasMo {
 		BackToRoot();
 	}
 
+	void Tree::ResetFoundWords()
+	{
+		std::stack<Node*> neighbors;
+		neighbors.push(_current);
+		while (!neighbors.empty())
+		{
+			Node* neighbor = neighbors.top();
+			neighbor->IsFound = false;
+			neighbors.pop();
+
+			for (unsigned i = 0; i < ALPHABET_SIZE; i++)
+			{
+				if (neighbor->Children[i])
+				{
+					neighbors.push(neighbor->Children[i]);
+				}
+			}
+		}
+	}
+
 	//does a depth first search on the tree and returns all available letters
 	std::string Tree::ToString() const
 	{
