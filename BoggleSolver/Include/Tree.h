@@ -9,7 +9,6 @@ namespace TomasMo {
 	{
 	private:
 		Node* _current;
-		//TODO A good idea would be to have a root node
 
 	private:
 		//might be a good idea to make this function more robust
@@ -50,8 +49,6 @@ namespace TomasMo {
 
 		void AddLetter(char letter);
 		void AddWord(const char* word);
-		//TODO optimize this function
-		std::string GetTraversedWord();
 
 		//Only for testing
 		std::string ToString() const;

@@ -1,14 +1,13 @@
-- operator== for Results
-    - compare Results in BoardTest3x3
 - full program performance tests
     - 100X100
     - 300x300
     - 500x500
     - 1000x1000
-- make a cross-platform Scanf function
-- clean up all TODO's in code
+- alphabet size move to a more general place
 - board not square test find words
+- add a root node to tree class for performance optimizations
 - optimize i*j to current and back stuff
 - optimize Node size, but check if performance doesn't suffer
-    - support not only lower case letters
+    - support uppercase and lowercase letters
 - test with bigger dictionary
+- test file loading with C

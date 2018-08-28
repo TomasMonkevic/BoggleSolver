@@ -2,7 +2,7 @@
 
 #include <string.h>
 
-#define ALPHABET_SIZE 26 //TODO move to a more general place
+#define ALPHABET_SIZE 26
 
 namespace TomasMo {
 
@@ -10,7 +10,7 @@ namespace TomasMo {
 	{
 		char Letter; //not needed because can be determined from child index
 		bool IsWord;
-		Node* Children[ALPHABET_SIZE]; //TODO test with std::vector
+		Node* Children[ALPHABET_SIZE];
 		Node* Parent;
 
 		Node();

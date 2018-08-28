@@ -82,18 +82,6 @@ namespace TomasMo {
 		BackToRoot();
 	}
 
-	std::string Tree::GetTraversedWord()
-	{
-		std::string result = "";
-		Node* iterator = _current;
-		while (iterator->Parent)
-		{
-			result.insert(result.begin(), iterator->Letter);
-			iterator = iterator->Parent;
-		}
-		return result;
-	}
-
 	//does a depth first search on the tree and returns all available letters
 	std::string Tree::ToString() const
 	{
