@@ -1,6 +1,7 @@
 #include "../Include/Utils.h"
 #include <fstream>
 #include <string.h>
+#include <cstdarg>
 
 namespace TomasMo {
 
@@ -41,5 +42,18 @@ namespace TomasMo {
 			return nullptr;
 		}
 		return (char*)memcpy(s, src, lenght);
+	}
+
+	int Sscanf(const char* buffer, const char* format, ...)
+	{
+		va_list vaArgs;
+		va_start(vaArgs, format);
+#ifdef _WIN32
+		int result = vsscanf_s(buffer, format, vaArgs);
+#else
+		int result = vsscanf(buffer, format, vaArgs);
+#endif
+		va_end(vaArgs);
+		return result;
 	}
 }

@@ -5,4 +5,5 @@ namespace TomasMo {
 	char* LoadFile(const char* path); //TODO test with c style file reading
 	char* Strtok(char* string, const char* delimeters, char** nextToken);
 	char* Strdup(const char *src);
+	int Sscanf(const char* buffer, const char* format, ...);
 }
