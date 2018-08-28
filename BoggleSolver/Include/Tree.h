@@ -9,6 +9,7 @@ namespace TomasMo {
 	{
 	private:
 		Node* _current;
+		Node* const _root;
 
 	private:
 		//might be a good idea to make this function more robust

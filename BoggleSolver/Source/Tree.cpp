@@ -6,7 +6,7 @@
 namespace TomasMo {
 
 	Tree::Tree()
-		: _current(new Node())
+		: _current(new Node()), _root(_current)
 	{
 
 	}
@@ -46,12 +46,7 @@ namespace TomasMo {
 
 	void Tree::BackToRoot()
 	{
-		Node* iterator = _current;
-		while (iterator->Parent)
-		{
-			iterator = iterator->Parent;
-		}
-		_current = iterator;
+		_current = _root;
 	}
 
 	void Tree::Next(char letter)
