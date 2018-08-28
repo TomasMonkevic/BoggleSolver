@@ -3,6 +3,8 @@
     - 300x300
     - 500x500
     - 1000x1000
+- fix duplicated words bug
+- only add words longer than 3 letters to dictionary
 - alphabet size move to a more general place
 - board not square test find words
 - add a root node to tree class for performance optimizations
