@@ -11,7 +11,7 @@ char* GenerateRandomBoard(unsigned width, unsigned height)
 	char* result = new char[width * height];
 	for (unsigned i = 0; i < width*height; i++)
 	{
-		result[i] = letters[std::rand() % 27];
+		result[i] = letters[std::rand() % 26];
 	}
 	return result;
 }
@@ -20,6 +20,7 @@ int main()
 {
 	unsigned width = 1000, height = 1000;
 	char* board = GenerateRandomBoard(width, height);
+	std::cout << "Solving " << width << " x " << height << " board. Please wait..." << std::endl;
 	TomasMo::Timer timer;
 	LoadDictionary("../Resources/Dictionary.txt");
 	Results results = FindWords(board, width, height);
