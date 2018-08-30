@@ -25,7 +25,10 @@ namespace TomasMo {
 		word = Strtok(fileContent.get(), "\n", &nextToken);
 		while (word)
 		{
-			AddWord(word);
+			if (strlen(word) >= 3)
+			{
+				AddWord(word);
+			}
 			word = Strtok(nullptr, "\n", &nextToken);
 		}
 	}
