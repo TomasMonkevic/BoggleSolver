@@ -70,6 +70,46 @@ TEST_F(SolverTests, Board3x3)
 	EXPECT_EQ(result, expectedResults);
 	FreeWords(result);
 	std::cout << "Time elapsed: " << elapsedMs << " ms. " << result.Count << std::endl;
+	EXPECT_TRUE(elapsedMs < 30);
+}
+
+TEST_F(SolverTests, Board2x3)
+{
+	Board solver((std::string(RESOURCE_PATH) + std::string("Board2x3.txt")).c_str(), *s_dictionary);
+	Timer timer;
+	Results result = solver.FindWords();
+	long long elapsedMs = timer.ElapsedMs();
+	std::ofstream resultFile(std::string(RESOURCE_PATH) + std::string("Board2x3-Results.txt"));
+	resultFile << result;
+	resultFile.close();
+	const char* expectedWords[] = { "daze", "zed", "eau", "adz", "adze", "qua", "quad" };
+	Results expectedResults;
+	expectedResults.Count = 7;
+	expectedResults.Score = 7;
+	expectedResults.Words = expectedWords;
+	EXPECT_EQ(result, expectedResults);
+	FreeWords(result);
+	std::cout << "Time elapsed: " << elapsedMs << " ms. " << result.Count << std::endl;
+	EXPECT_TRUE(elapsedMs < 30);
+}
+
+TEST_F(SolverTests, Board3x2)
+{
+	Board solver((std::string(RESOURCE_PATH) + std::string("Board3x2.txt")).c_str(), *s_dictionary);
+	Timer timer;
+	Results result = solver.FindWords();
+	long long elapsedMs = timer.ElapsedMs();
+	std::ofstream resultFile(std::string(RESOURCE_PATH) + std::string("Board3x2-Results.txt"));
+	resultFile << result;
+	resultFile.close();
+	const char* expectedWords[] = { "daze", "zed", "zax", "adz", "adze" };
+	Results expectedResults;
+	expectedResults.Count = 5;
+	expectedResults.Score = 5;
+	expectedResults.Words = expectedWords;
+	EXPECT_EQ(result, expectedResults);
+	FreeWords(result);
+	std::cout << "Time elapsed: " << elapsedMs << " ms. " << result.Count << std::endl;
 	EXPECT_TRUE(elapsedMs < 10);
 }
 

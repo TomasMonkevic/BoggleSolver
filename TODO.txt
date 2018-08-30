@@ -5,7 +5,6 @@
     - 1000x1000
 - only add words longer than 3 letters to dictionary
 - alphabet size move to a more general place
-- board not square test find words
 - optimize i*j to current and back stuff
 - optimize Node size, but check if performance doesn't suffer
     - support uppercase and lowercase letters
