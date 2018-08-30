@@ -5,6 +5,7 @@
     - 1000x1000
 - alphabet size move to a more general place
 - optimize i*j to current and back stuff
+- remove all warnings and review code
 - optimize Node size, but check if performance doesn't suffer
     - support uppercase and lowercase letters
 - test with bigger dictionary
