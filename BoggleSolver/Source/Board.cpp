@@ -111,8 +111,8 @@ namespace TomasMo {
 			score += WordScore(_currentWord);
 			words.emplace_back(Strdup(_currentWord));
 		}
-		int currentX = static_cast<int>(current % _height);
-		int currentY = static_cast<int>(current / _height);
+		int currentX = static_cast<int>(current % _width);
+		int currentY = static_cast<int>(current / _width);
 		for (unsigned i = std::max(0, currentY - 1); i <= std::min(static_cast<int>(_height - 1), currentY + 1); i++)
 		{
 			for (unsigned j = std::max(0, currentX - 1); j <= std::min(static_cast<int>(_width - 1), currentX + 1); j++)
